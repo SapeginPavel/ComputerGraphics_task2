@@ -27,6 +27,13 @@ public class AffineTransformations {
         return multiply(matrix, matrixOfOffset);
     }
 
+    public static double[][] scaling(double[][] matrix, double x, double y, double coefficientOfScaling) {
+        matrix = setNewCenterOfCoordinates(matrix, -x, -y);
+        matrix = scaling(matrix, coefficientOfScaling);
+        matrix = setNewCenterOfCoordinates(matrix, x, y);
+        return matrix;
+    }
+
     public static double[][] scaling(double[][] matrix, double coefficientOfScaling) { //коэфф общий
         double[][] matrixScale = new double[3][3];
         matrixScale[0][0] = coefficientOfScaling;
